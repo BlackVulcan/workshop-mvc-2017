@@ -2,8 +2,6 @@
 
 return [
     "database" => [
-        "user" => "",
-        "password" => "",
-        "url" => ""
+        "path" => BASE_DIR . "databases/dummydata.db"
     ]
 ];

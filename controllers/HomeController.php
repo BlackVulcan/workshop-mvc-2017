@@ -10,5 +10,4 @@ class HomeController
     {
         return View::render('../views/homecontroller.php');
     }
-
 }

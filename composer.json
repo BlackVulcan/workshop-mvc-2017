@@ -5,5 +5,9 @@
       "Framework\\": "framework/",
       "Models\\": "models/"
     }
+  },
+  "require": {
+    "illuminate/database": "^5.4",
+    "smarty/smarty": "^3.1"
   }
 }
