@@ -1,6 +1,7 @@
 <?php
 
 namespace Controllers;
+
 use Framework\Http\View;
 
 /**
@@ -11,7 +12,8 @@ use Framework\Http\View;
  */
 class HomeController
 {
-    public function index() {
+    public function index()
+    {
         return View::render('../views/homecontroller.php');
     }
 

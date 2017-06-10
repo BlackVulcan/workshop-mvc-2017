@@ -1,9 +1,9 @@
 {
-    "autoload": {
-        "psr-4": {
-            "Controllers\\": "controllers/",
-            "Framework\\": "framework/",
-            "Models\\": "models/"
-        }
+  "autoload": {
+    "psr-4": {
+      "Controllers\\": "controllers/",
+      "Framework\\": "framework/",
+      "Models\\": "models/"
     }
+  }
 }
