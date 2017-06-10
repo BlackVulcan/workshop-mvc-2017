@@ -48,7 +48,7 @@ class Baby
         self::$smarty->setTemplateDir(BASE_DIR . "views");
         self::$smarty->setCompileDir(BASE_DIR . 'storage/views_co');
         self::$smarty->setCacheDir(BASE_DIR . 'storage/views_ca');
-        self::$smarty->setConfigDir(BASE_DIR.'config');
+        self::$smarty->setConfigDir(BASE_DIR . 'config');
     }
 
     public function run()

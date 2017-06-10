@@ -5,6 +5,20 @@ namespace Framework\View;
 class View
 {
     private $data = array();
+    /**
+     * @var string
+     */
+    private $template;
+
+    /**
+     * View constructor.
+     *
+     * @param string $template
+     */
+    public function __construct($template)
+    {
+        $this->template = $template;
+    }
 
     /**
      * Includes the path of the view in the index.php file. This static method is
@@ -29,26 +43,13 @@ class View
         return new self($template);
     }
 
-    /**
-     * @var string
-     */
-    private $template;
-
-    /**
-     * View constructor.
-     *
-     * @param string $template
-     */
-    public function __construct($template)
+    public function with($name, $value)
     {
-        $this->template = $template;
-    }
-
-    public function with($name, $value) {
         $this->data["name"] = $value;
     }
 
-    public function getData() {
+    public function getData()
+    {
         return $this->data;
     }
 
