@@ -4,6 +4,7 @@ namespace Framework\View;
 
 class View
 {
+    private $data = array();
 
     /**
      * Includes the path of the view in the index.php file. This static method is
@@ -11,11 +12,48 @@ class View
      * controller. It replaces the include 'path/to/view.php';
      *
      * @param string $path
-     * @return string
      */
-    public static function render($path)
+    public static function display($path)
     {
         include $path;
-        return;
+    }
+
+    /**
+     * Prepares a view for rendering by the template system.
+     *
+     * @param string $template
+     * @return View
+     */
+    public static function render($template)
+    {
+        return new self($template);
+    }
+
+    /**
+     * @var string
+     */
+    private $template;
+
+    /**
+     * View constructor.
+     *
+     * @param string $template
+     */
+    public function __construct($template)
+    {
+        $this->template = $template;
+    }
+
+    public function with($name, $value) {
+        $this->data["name"] = $value;
+    }
+
+    public function getData() {
+        return $this->data;
+    }
+
+    public function getTemplate()
+    {
+        return $this->template;
     }
 }

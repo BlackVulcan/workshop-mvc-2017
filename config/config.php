@@ -2,6 +2,6 @@
 
 return [
     "database" => [
-        "path" => BASE_DIR . "databases/dummydata.db"
+        "path" => BASE_DIR . "storage/dummydata.db"
     ]
 ];
