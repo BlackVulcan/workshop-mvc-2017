@@ -1,6 +1,7 @@
 <?php
 
 namespace Controllers;
+use Framework\Http\View;
 
 /**
  * Created by PhpStorm.
@@ -11,6 +12,7 @@ namespace Controllers;
 class HomeController
 {
     public function index() {
-        return "Hello world";
+        return View::render('../views/homecontroller.php');
     }
+
 }
