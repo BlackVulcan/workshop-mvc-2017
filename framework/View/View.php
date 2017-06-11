@@ -46,6 +46,8 @@ class View
     public function with($name, $value)
     {
         $this->data["name"] = $value;
+
+        return $this;
     }
 
     public function getData()
