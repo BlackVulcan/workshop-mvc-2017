@@ -12,7 +12,9 @@ class Baby
     private static $smarty = null;
 
     /**
-     * @param array $config
+     * Init the framework and let it build/bootstrap required services
+     *
+     * @param array $config The config for the framework
      *
      * @return Baby
      */
@@ -45,9 +47,9 @@ class Baby
     /**
      * Bootstrap the views.
      *
-     * @param $config
+     * @param array $config
      */
-    private static function bootViews($config)
+    private static function bootViews(array $config)
     {
         self::$smarty = new Smarty();
         self::$smarty->setTemplateDir(BASE_DIR . "views");
@@ -57,7 +59,7 @@ class Baby
     }
 
     /**
-     *
+     * Run the framework and let it handle the request
      */
     public function run()
     {

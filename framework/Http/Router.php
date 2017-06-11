@@ -9,7 +9,9 @@ use Smarty;
 class Router
 {
     /**
-     * @param Smarty $smarty
+     * Run the router over the build up route collection
+     *
+     * @param Smarty $smarty The template engine if required
      */
     public static function run(Smarty $smarty)
     {
@@ -32,8 +34,10 @@ class Router
     }
 
     /**
-     * @param Smarty $smarty
-     * @param View $view
+     * Render a result to the screen of the user
+     *
+     * @param Smarty $smarty The template engine to use
+     * @param View $view The view that needs to be rendered
      */
     private static function render(Smarty $smarty, View $view)
     {

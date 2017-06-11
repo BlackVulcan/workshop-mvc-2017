@@ -17,10 +17,11 @@ class Route
 
     /**
      * Route constructor.
-     * @param $requestMethod
-     * @param $uri
-     * @param $class
-     * @param $method
+     *
+     * @param string $requestMethod The method of the request
+     * @param string $uri The path to the request
+     * @param string $class The controller class that handles the request
+     * @param string $method The method on the class
      */
     public function __construct($requestMethod, $uri, $class, $method)
     {
@@ -31,8 +32,11 @@ class Route
     }
 
     /**
-     * @param $uri
-     * @return mixed|string
+     * Build the uri to the required format for later
+     *
+     * @param string $uri The uri to reformat
+     *
+     * @return string The formatted uri
      */
     private function buildUri($uri)
     {
@@ -46,9 +50,11 @@ class Route
     }
 
     /**
-     * @param $uri
-     * @param $class
-     * @param $method
+     * Add a new Get route to the router.
+     *
+     * @param string $uri The path that this route will respond to
+     * @param string $class The controller class that will handle the request
+     * @param string $method The method on the controller class that will handle the request
      */
     public static function get($uri, $class, $method)
     {
@@ -56,9 +62,11 @@ class Route
     }
 
     /**
-     * @param $uri
-     * @param $class
-     * @param $method
+     * Add a new Post route to the router.
+     *
+     * @param string $uri The path that this route will respond to
+     * @param string $class The controller class that will handle the request
+     * @param string $method The method on the controller class that will handle the request
      */
     public static function post($uri, $class, $method)
     {
@@ -66,12 +74,14 @@ class Route
     }
 
     /**
-     * @param $uri
-     * @param $method
+     * Match the route to the given uri and method
      *
-     * @return array
+     * @param string $uri The uri to be matched against
+     * @param string $method The method to be matched against
      *
-     * @throws Exception
+     * @return array The result of the match
+     *
+     * @throws Exception Will throw if no match was found for the given $uri and $method
      */
     public static function match($uri, $method)
     {
@@ -86,10 +96,12 @@ class Route
     }
 
     /**
-     * @param $uri
-     * @param $method
+     * Check to see if the route matches
      *
-     * @return bool
+     * @param string $uri The uri to be matched against
+     * @param string $method The method to be matched against
+     *
+     * @return bool True if the route matches, false otherwise
      */
     private function matches($uri, $method)
     {
@@ -101,7 +113,9 @@ class Route
     }
 
     /**
-     * @return array
+     * Build the matches route to a format that the Router understands
+     *
+     * @return array The formatted route match
      */
     private function build()
     {

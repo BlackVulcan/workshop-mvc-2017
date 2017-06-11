@@ -14,7 +14,7 @@ class View
     /**
      * View constructor.
      *
-     * @param string $template
+     * @param string $template The template that needs to be rendered.
      */
     public function __construct($template)
     {
@@ -34,10 +34,10 @@ class View
     }
 
     /**
-     * Prepares a view for rendering by the template system.
+     * Prepares a view for rendering by the template system
      *
-     * @param string $template
-     * @return View
+     * @param string $template The template that needs to be displayed
+     * @return View A View that contains the template and that be used to add data to
      */
     public static function render($template)
     {
@@ -45,9 +45,12 @@ class View
     }
 
     /**
-     * @param $name
-     * @param $value
-     * @return $this
+     * Add data to be used later by the templating engine
+     *
+     * @param string $name The key of the data
+     * @param mixed $value The value of the data
+     *
+     * @return $this The view for adding more data to
      */
     public function with($name, $value)
     {
@@ -57,6 +60,8 @@ class View
     }
 
     /**
+     * Get all added data
+     *
      * @return array
      */
     public function getData()
@@ -65,6 +70,8 @@ class View
     }
 
     /**
+     * Get the template to be rendered
+     *
      * @return string
      */
     public function getTemplate()
