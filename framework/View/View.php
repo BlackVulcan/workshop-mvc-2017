@@ -5,6 +5,7 @@ namespace Framework\View;
 class View
 {
     private $data = array();
+
     /**
      * @var string
      */
@@ -43,6 +44,11 @@ class View
         return new self($template);
     }
 
+    /**
+     * @param $name
+     * @param $value
+     * @return $this
+     */
     public function with($name, $value)
     {
         $this->data[$name] = $value;
@@ -50,11 +56,17 @@ class View
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getData()
     {
         return $this->data;
     }
 
+    /**
+     * @return string
+     */
     public function getTemplate()
     {
         return $this->template;

@@ -5,6 +5,8 @@ namespace Framework\Model;
 
 class Model extends \Illuminate\Database\Eloquent\Model
 {
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -18,6 +20,4 @@ class Model extends \Illuminate\Database\Eloquent\Model
      * @var array
      */
     protected $guarded = [];
-
-    public $timestamps = false;
 }

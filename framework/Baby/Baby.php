@@ -11,6 +11,11 @@ class Baby
 {
     private static $smarty = null;
 
+    /**
+     * @param array $config
+     *
+     * @return Baby
+     */
     public static function init(array $config)
     {
         self::bootModels($config);
@@ -51,6 +56,9 @@ class Baby
         self::$smarty->setConfigDir(BASE_DIR . 'config');
     }
 
+    /**
+     *
+     */
     public function run()
     {
         Router::run(self::$smarty);
