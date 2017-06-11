@@ -18,4 +18,6 @@ class Model extends \Illuminate\Database\Eloquent\Model
      * @var array
      */
     protected $guarded = [];
+
+    public $timestamps = false;
 }
