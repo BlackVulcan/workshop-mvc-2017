@@ -1,3 +1,14 @@
+<!-- Documentation -->
+# Documentation
+
+### Eloquent (ORM). Used for things such as querying data.
+* https://laravel.com/docs/5.4/eloquent
+
+### Smarty (Templating engine). Used to display variables in the views.
+* Variables: http://www.smarty.net/docs/en/language.syntax.variables.tpl
+* For loop: http://www.smarty.net/docs/en/language.function.for.tpl#idp35225872
+* For each loop: http://www.smarty.net/docs/en/language.function.foreach.tpl
+
 <!-- Routes -->
 # Routes
 Routes are where it all starts in an MVC structure. When someone browses the web and goes to a specific url
@@ -18,21 +29,26 @@ So when a user goes to /users, the code that executes is the index() method of t
 
 <!-- Controllers -->
 # Controllers
-@TODO
+Controllers usually fetch the data from what the Model returns and then sends the data to the View. Sort of like an intermediate class.
 
 ### Add a new Controller
 * Go to the controllers/ folder
 * Create a new file. Name it however you want (though there are certain naming conventions like PostController.php or UserController.php)
-* open the file with `<?php` . You don't need to close the php tags.
+* Open the file with `<?php` . You don't need to close the php tags.
 * Add the following: `namespace Controllers;` and `use Framework\Http\View;` . These are basically import statements. It says that your file is now part of the Controllers namespace and that you can use the View.php class in the `Framework\Http` namespace. It's a convention that namespaces correspond to the folder structure.
 * You can now make the new class with the functions in it (the one you specified in the routes.php)
 
 <!-- Models -->
 # Models
-@TODO
+Models communicate between the database and controllers. They usually contain (business) logic like database queries. in the context of MVC's for the web.
+Most frameworks usually use ORM's (Object Relational Mapping). They bind your recently created model to your database table. With ORM's you don't have to write all queries yourself, the ORM does this for you. This means that you can get all rows from the "users" table by typing something like `User::all()`. This depends on the ORM, as there are a lot of different ORM's just like there are different PHP frameworks. If you want, you can overwrite most functionality in your Model.
 
 ### Add a new Model
-* @TODO
+* Go to the models/folder
+* Create a new file. Name it however you want (though it's strongly recommended to give it the Singular name of your database table (Model: User.php for table "users" for example)
+* Open the file with `<?php` . You don't need to close the php tags.
+* Add the following: `namespace Models;` and `use Framework\Model\Model;` . Name the class the same as the name of the file. Then add extend the Model. (Example: `class User extends Model`)
+* You now have a model you can use in your controller. Don't forget to import the Model in the Controller. (Example: add `use Models\User;` in your controller)
 
 <!-- Views -->
 # Views
