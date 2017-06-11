@@ -14,8 +14,7 @@ class Router
         $controller = $route["class"];
         $controller = new $controller();
         $method = $route["method"];
-        /** @var mixed $result */
-        $result = $controller->$method();
+        $result = call_user_func_array([$controller, $method], $route["matches"]);
 
         if ($result instanceof View) {
             self::render($smarty, $result);

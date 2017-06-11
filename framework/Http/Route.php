@@ -10,11 +10,13 @@ class Route
     private $class;
     private $method;
     private $requestMethod;
+    private $regex = false;
+    private $routeMatches;
 
     public function __construct($requestMethod, $uri, $class, $method)
     {
         $this->requestMethod = $requestMethod;
-        $this->uri = $uri;
+        $this->uri = $this->buildUri($uri);
         $this->class = $class;
         $this->method = $method;
     }
@@ -32,6 +34,7 @@ class Route
     public static function match($uri, $method)
     {
         foreach (self::$routes as $route) {
+            /** @var Route $route */
             if ($route->matches($uri, $method)) {
                 return $route->build();
             }
@@ -42,11 +45,31 @@ class Route
 
     private function matches($uri, $method)
     {
-        return $this->uri === $uri && $this->requestMethod === $method;
+        if($this->regex) {
+            return preg_match($this->uri, $uri, $this->routeMatches) && $this->requestMethod === $method;
+        } else {
+            return $this->uri === $uri && $this->requestMethod === $method;
+        }
     }
 
     private function build()
     {
-        return ["class" => $this->class, "method" => $this->method];
+        foreach ($this->routeMatches as $key => $value) {
+            if (is_int($key)) {
+                unset($this->routeMatches[$key]);
+            }
+        }
+        return ["class" => $this->class, "method" => $this->method, "matches" => $this->routeMatches];
+    }
+
+    private function buildUri($uri)
+    {
+        if(str_contains($uri, "{") && str_contains($uri, "}")) {
+            $uri = str_replace(["{", "}"], ["(?P<", ">[^/]*)"], $uri);
+            $uri = "~{$uri}~";
+            $this->regex = true;
+        }
+
+        return $uri;
     }
 }
