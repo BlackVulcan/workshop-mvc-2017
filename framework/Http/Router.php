@@ -13,9 +13,10 @@ class Router
      *
      * @param Smarty $smarty The template engine if required
      */
-    public static function run(Smarty $smarty)
+    public static function run(Smarty $smarty, array $config = [])
     {
-        $route = Route::match($_SERVER["REQUEST_URI"], $_SERVER["REQUEST_METHOD"]);
+        $url = str_replace($config["routes"]["base_path"], "", $_SERVER["REQUEST_URI"]);
+        $route = Route::match($url, $_SERVER["REQUEST_METHOD"]);
         $controller = $route["class"];
         $controller = new $controller();
         $method = $route["method"];

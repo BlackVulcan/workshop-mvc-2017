@@ -10,6 +10,7 @@ use Smarty;
 class Baby
 {
     private static $smarty = null;
+    private static $config;
 
     /**
      * Init the framework and let it build/bootstrap required services
@@ -20,6 +21,7 @@ class Baby
      */
     public static function init(array $config)
     {
+        self::$config = $config;
         self::bootModels($config);
         self::bootViews($config);
 
@@ -63,6 +65,6 @@ class Baby
      */
     public function run()
     {
-        Router::run(self::$smarty);
+        Router::run(self::$smarty, self::$config);
     }
 }
