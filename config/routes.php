@@ -1,5 +1,6 @@
 <?php
 
+use Controllers\UserController;
 use Framework\Http\Route;
 
 # Step 1: Define crontrollers here
@@ -12,3 +13,5 @@ use Controllers\HomeController;
 # Argument 3: The method (function) of the controller to be used
 Route::get("/", HomeController::class, "index");
 Route::get("/test", HomeController::class, "test");
+Route::get("/user", UserController::class, "index");
+Route::post("/user", UserController::class, "store");
